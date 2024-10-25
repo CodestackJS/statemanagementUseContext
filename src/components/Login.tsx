@@ -1,10 +1,11 @@
-import { useReducer, useState } from 'react';
+import { useContext, useReducer, useState } from 'react';
 import authReducer from '../reducers/authReducer';
+import userContext from '../contexts/userContext';
 
 const Login  = () => {
   
 //   const [username, setUsername] = useState<string>('Jose!');
-const  [user, dispatch] = useReducer(authReducer, '')
+  const {user, dispatch} = useContext(userContext)
 
   // Handle login
   const handleLogin = () => {
@@ -18,7 +19,7 @@ const  [user, dispatch] = useReducer(authReducer, '')
 
   return (
     <div className="container mt-5">
-      <h1 className="mb-4">User Authentication</h1>
+      <h1 className="mb-4"></h1>
       {user ? (
           <div>
             <h2>It is I, {user}!</h2>

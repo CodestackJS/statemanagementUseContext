@@ -5,7 +5,7 @@ import React from "react";
 
 interface TodoContextType {
     todos: Todo[];
-    dispatch: Dispatch<TodoAction> 
+    dispatch: Dispatch<TodoAction>;
 }
 
 const TodoContext = React.createContext<TodoContextType>({} as TodoContextType) 

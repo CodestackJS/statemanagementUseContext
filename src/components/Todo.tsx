@@ -1,5 +1,8 @@
-import { useReducer, useState } from "react"
+import { useContext, useReducer, useState } from "react"
 import todoReducer from "../reducers/TodoReducer";
+import TodoContext from "../contexts/todoContext";
+import authReducer from "../reducers/authReducer";
+import userContext from "../contexts/userContext";
 
 interface Todo {
     id: number;
@@ -8,7 +11,11 @@ interface Todo {
 
 const Todo = () => {
     // const [todos, setTodos] = useState<Todo[]>([]);
-    
+    const {user} = useContext(userContext)
+
+   const { todos, dispatch } = useContext(TodoContext)
+  //  const  [user, dispatch] = useReducer(authReducer, '')
+
 
     const generateRandomNumber = ():number => {
         return Math.floor(Math.random() * 1000)
@@ -27,8 +34,10 @@ const Todo = () => {
   return (
   <>
   
+ 
     <div className="container mt-5">
       <h1 className="mb-4">Todo List</h1>
+      <h3>User:{} {user}  </h3>
       <button className="btn btn-primary mb-3" onClick={addTodo}>
         Add Todo
       </button>

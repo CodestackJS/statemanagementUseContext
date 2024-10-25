@@ -1,9 +1,16 @@
+import { useContext } from "react"
+import TodoContext from "../contexts/todoContext"
+import Login from "./Login"
 
 
 const MyNavbar = () => {
+  
+  const {todos} = useContext(TodoContext)
+
   return (
    <>
-  
+   {/* <p>{}</p> */}
+
     <nav className="navbar navbar-expand-lg bg-body-tertiary">
   <div className="container-fluid">
     <a className="navbar-brand" href="#">Navbar</a>
@@ -21,14 +28,26 @@ const MyNavbar = () => {
         <li className="nav-item">
           <a className="nav-link" href="#">Pricing</a>
         </li>
+
+        
+
         <li className="nav-item">
-          <a className="nav-link disabled" aria-disabled="true">Disabled</a>
+           
+          <a className="nav-link disabled" aria-disabled="true"><span>{todos.length}</span></a>
         </li>
+        
       </ul>
     </div>
   </div>
+  <Login/>
 </nav>
+
+
+
    </>
+
+    
+
   )
 }
 
