@@ -1,8 +1,6 @@
-import { useContext, useReducer, useState } from "react"
-import todoReducer from "../reducers/TodoReducer";
-import TodoContext from "../contexts/todoContext";
-import authReducer from "../reducers/authReducer";
-import userContext from "../contexts/userContext";
+import TodoContext from "./todoContext";
+import userContext from "../../contexts/userContext";
+import { useContext } from "react";
 
 interface Todo {
     id: number;
@@ -55,4 +53,4 @@ const Todo = () => {
   </>
   )
 }
-export default Todo
+export default Todo;

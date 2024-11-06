@@ -1,11 +1,13 @@
 import { useReducer } from "react"
 import HomePage from "./components/HomePage"
 import MyNavbar from "./components/MyNavbar"
-import todoReducer from "./reducers/TodoReducer"
-import TodoContext from "./contexts/todoContext"
+import todoReducer from "./state-management/Todos/TodoReducer"
+import TodoContext from "./state-management/Todos/todoContext"
 import Login from "./components/Login"
 import authReducer from "./reducers/authReducer"
 import userContext from "./contexts/userContext"
+import AuthProvider from "./AuthProvider"
+import TodoProvider from "./state-management/Todos/TodoProvider"
 
 
 
@@ -13,8 +15,10 @@ import userContext from "./contexts/userContext"
 
 const App = () => {
 
-  const [todos,dispatch] = useReducer(todoReducer,[])
-  const  [user, userDispatch] = useReducer(authReducer, '')
+
+  //moved the code authReducer to AuthProvider file
+  // const  [user, userDispatch] = useReducer(authReducer, '')
+  
 
   return (
   <>
@@ -24,20 +28,21 @@ const App = () => {
 {/* <Todo/> */}
 {/* <Login/> */}
 
-<TodoContext.Provider value={{todos, dispatch:dispatch}}>
-<userContext.Provider value={{user, dispatch: userDispatch}}>
+<AuthProvider>
+
+
+<TodoProvider>
+{/* <userContext.Provider value={{user, dispatch: userDispatch}}> */}
 
 <MyNavbar/>
 <HomePage/>
+</TodoProvider>
 
-</userContext.Provider>
+</AuthProvider>
 
-
-
-</TodoContext.Provider>
-
+{/* </userContext.Provider> */}
 
   </>
   );
 };
-export default App
+export default App;

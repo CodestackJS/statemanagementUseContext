@@ -1,5 +1,5 @@
 import { Dispatch } from "react";
-import { Todo, TodoAction } from "../reducers/TodoReducer";
+import { Todo, TodoAction } from "./TodoReducer";
 import React from "react";
 
 
